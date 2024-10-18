@@ -105,15 +105,21 @@ const nightModeStyle = [
   }
 ]
 
+const initialMarkers = [
+  { id: 1, position: { lat: 52.48267771366152, lng: -1.8924990491205056 }, image: '/happy.svg'},
+  { id: 2, position: { lat: 52.47267771366152, lng: -1.8824990491205056 }, image: '/happy.svg'},
+  { id: 3, position: { lat: 52.49267771366152, lng: -1.9024990491205056 }, image: '/sad.svg'},
+]
 
 // This is the map app
 export default function MapApp() {
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || 'AIzaSyDdAYiwG1aqci4CpGvDs7yMS4PLcxPJmEM'
   })
 
   const [map, setMap] = useState(null)
+  const [markers, setMarkers] = useState(initialMarkers)
 
   const onLoad = useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center)
@@ -135,15 +141,26 @@ export default function MapApp() {
   
   return (
 <div>
-      <GoogleMap
+<GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={center}
-        zoom={8}
+        zoom={3}
         onLoad={onLoad}
         onUnmount={onUnmount}
         options={{ styles: nightModeStyle, streetViewControl: false, zoomControl: false }}
       >
-        <Marker position={center} />
+        {markers.map(marker => (
+          <Marker
+            key={marker.id}
+            position={marker.position}
+            icon={{
+              url: marker.image,
+              scaledSize: new window.google.maps.Size(40, 50),
+              origin: new window.google.maps.Point(0, 0),
+              anchor: new window.google.maps.Point(16, 32),
+            }}
+          />
+        ))}
       </GoogleMap>
   </div>
   )
