@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
+import { useRouter } from "next/navigation";
 // import Dashboard from "./Dashboard/page";
 // Initialize the Supabase client
 const supabase = createClient(
@@ -10,6 +11,7 @@ const supabase = createClient(
 );
 
 export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,7 +26,8 @@ export default function LoginPage() {
         password: password,
       });
       if (error) throw error;
-      alert("Logged in successfully!");
+      // alert("Logged in successfully!");
+      router.push("/map");
       console.log(data);
       // Here you would typically save the user session and redirect
     } catch (error) {
