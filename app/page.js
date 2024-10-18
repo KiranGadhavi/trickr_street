@@ -9,6 +9,7 @@ const supabase = createClient(
 );
 
 export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,7 +25,8 @@ export default function LoginPage() {
         password: password,
       });
       if (error) throw error;
-      alert("Logged in successfully!");
+      // alert("Logged in successfully!");
+      router.push("/map");
       console.log(data);
     } catch (error) {
       setError(error.message);
