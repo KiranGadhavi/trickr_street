@@ -1,8 +1,7 @@
 'use client'
 
-import React, { useState, useCallback, useRef } from 'react'
+import React, { useState, useCallback} from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
-import styles from "./Map.module.css";
 
 
 // This is the map container styling
@@ -11,20 +10,6 @@ const mapContainerStyle = {
   height: '100vh',
   margin: '0 auto'
 }
-
-//additional map styling
-const mapStyles = [
-  {
-    featureType: "poi",
-    elementType: "labels",
-    stylers: [{ visibility: "off" }]
-  },
-  {
-    featureType: "transit",
-    elementType: "labels.icon",
-    stylers: [{ visibility: "off" }]
-  }
-];
 
 const center = {lat: 52.48267771366152, lng: -1.8924990491205056}
 
@@ -125,7 +110,7 @@ const nightModeStyle = [
 export default function MapApp() {
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || 'AIzaSyDTa4ju4S70pKMrzdR70rOXveewM9803tU'
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''
   })
 
   const [map, setMap] = useState(null)
