@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
+import '@fontsource/jolly-lodger'; 
 
 // Initialize the Supabase client
 const supabase = createClient(
@@ -42,7 +43,7 @@ export default function LoginPage() {
          style={{ backgroundImage: "url('/backgrounds/HalloweenBackground.jpg')" }}>
       <div className="max-w-md w-full space-y-8 bg-opacity-60 bg-gray-900 p-6 rounded-lg shadow-lg">
         <div>
-          <h2 className="text-center text-4xl font-bold text-white">Trickr Street</h2>
+          <h2 className="text-center text-5xl font-bold text-white" style={{ fontFamily: 'Jolly Lodger, cursive' }}>Trickr Street</h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleLogin}>
           <div className="rounded-md shadow-sm space-y-4">
