@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-// import Dashboard from "./Dashboard/page";
 // Initialize the Supabase client
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -14,6 +13,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -26,26 +26,25 @@ export default function LoginPage() {
       if (error) throw error;
       alert("Logged in successfully!");
       console.log(data);
-      // Here you would typically save the user session and redirect
     } catch (error) {
       setError(error.message);
     } finally {
       setLoading(false);
     }
   };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+    <div className="min-h-screen bg-cover bg-center flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+         style={{ backgroundImage: "url('/backgrounds/HalloweenBackground.jpg')" }}>
+      <div className="max-w-md w-full space-y-8 bg-opacity-60 bg-gray-900 p-6 rounded-lg shadow-lg">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
-          </h2>
+          <h2 className="text-center text-4xl font-bold text-white">Trickr Street</h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleLogin}>
-          <div className="rounded-md shadow-sm -space-y-px">
+          <div className="rounded-md shadow-sm space-y-4">
             <div>
-              <label htmlFor="email-address" className="sr-only">
-                Email address
+              <label htmlFor="email-address" className="text-gray-300 block mb-1">
+                Email
               </label>
               <input
                 id="email-address"
@@ -53,14 +52,14 @@ export default function LoginPage() {
                 type="email"
                 autoComplete="email"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
+                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-500 placeholder-gray-400 text-gray-300 bg-transparent focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
+                placeholder="email..."
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div>
-              <label htmlFor="password" className="sr-only">
+              <label htmlFor="password" className="text-gray-300 block mb-1">
                 Password
               </label>
               <input
@@ -69,8 +68,8 @@ export default function LoginPage() {
                 type="password"
                 autoComplete="current-password"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
+                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-500 placeholder-gray-400 text-gray-300 bg-transparent focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
+                placeholder="password..."
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -81,7 +80,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
             >
               {loading ? "Signing in..." : "Sign in"}
             </button>
