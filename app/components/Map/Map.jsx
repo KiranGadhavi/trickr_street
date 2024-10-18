@@ -1,8 +1,7 @@
 'use client'
 
-import React, { useState, useCallback} from 'react'
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
-
+import React, { useState, useCallback } from 'react'
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api'
 
 // This is the map container styling
 const mapContainerStyle = {
@@ -11,7 +10,7 @@ const mapContainerStyle = {
   margin: '0 auto'
 }
 
-const center = {lat: 52.48267771366152, lng: -1.8924990491205056}
+const center = { lat: 52.48267771366152, lng: -1.8924990491205056 }
 
 // Night mode style
 const nightModeStyle = [
@@ -106,20 +105,24 @@ const nightModeStyle = [
 ]
 
 const initialMarkers = [
-  { id: 1, position: { lat: 52.48267771366152, lng: -1.8924990491205056 }, image: '/happy.svg'},
-  { id: 2, position: { lat: 52.47267771366152, lng: -1.8824990491205056 }, image: '/happy.svg'},
-  { id: 3, position: { lat: 52.49267771366152, lng: -1.9024990491205056 }, image: '/sad.svg'},
+  { id: 1, name:"👻👻👻👻", position: { lat: 52.48267771366152, lng: -1.8924990491205056 }, image: '/happy.svg', title: 'Happy House 1' },
+  { id: 2, name:"👻👻", position: { lat: 52.47267771366152, lng: -1.8824990491205056 }, image: '/happy.svg', title: 'Happy House 2' },
+  { id: 3, name:"👻", position: { lat: 52.49267771366152, lng: -1.9024990491205056 }, image: '/sad.svg', title: 'Sad House 1' },
+  { id: 4, name:"👻👻👻", position: { lat: 52.482760, lng: -1.892835 }, image: '/sad.svg', title: 'Sad House 2' },
+  { id: 5, name:"👻👻👻👻👻", position: { lat: 52.482910, lng: -1.892730 }, image: '/happy.svg', title: 'Happy House 3' },
+  { id: 6, name:"👻👻👻", position: { lat: 52.483050, lng: -1.892620 }, image: '/happy.svg', title: 'Happy House 4' },
 ]
 
 // This is the map app
 export default function MapApp() {
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || 'AIzaSyDdAYiwG1aqci4CpGvDs7yMS4PLcxPJmEM'
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
   })
 
   const [map, setMap] = useState(null)
   const [markers, setMarkers] = useState(initialMarkers)
+  const [selectedMarker, setSelectedMarker] = useState(null) // State to handle selected marker
 
   const onLoad = useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center)
@@ -138,10 +141,10 @@ export default function MapApp() {
   if (!isLoaded) {
     return <div>Loading maps</div>
   }
-  
+
   return (
-<div>
-<GoogleMap
+    <div>
+      <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={center}
         zoom={3}
@@ -159,9 +162,24 @@ export default function MapApp() {
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(16, 32),
             }}
+            onClick={() => setSelectedMarker(marker)} // Set the selected marker on click
           />
         ))}
+
+        {/* Show InfoWindow when a marker is clicked */}
+        {selectedMarker && (
+          <InfoWindow
+            position={selectedMarker.position}
+            onCloseClick={() => setSelectedMarker(null)} // Close the InfoWindow
+          >
+            <div>
+              <h1 >{}</h1>
+              <h2>{selectedMarker.title}</h2>
+              <p>Review: {selectedMarker.name}Lat: {selectedMarker.position.lat}, Lng: {selectedMarker.position.lng}</p>
+            </div>
+          </InfoWindow>
+        )}
       </GoogleMap>
-  </div>
+    </div>
   )
 }
