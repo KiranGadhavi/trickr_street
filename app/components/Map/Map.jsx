@@ -105,12 +105,12 @@ const nightModeStyle = [
 ]
 
 const initialMarkers = [
-  { id: 1, name:"👻👻👻👻", position: { lat: 52.48267771366152, lng: -1.8924990491205056 }, image: '/happy.svg', title: 'Happy House 1' },
-  { id: 2, name:"👻👻", position: { lat: 52.47267771366152, lng: -1.8824990491205056 }, image: '/happy.svg', title: 'Happy House 2' },
-  { id: 3, name:"👻", position: { lat: 52.49267771366152, lng: -1.9024990491205056 }, image: '/sad.svg', title: 'Sad House 1' },
-  { id: 4, name:"👻👻👻", position: { lat: 52.482760, lng: -1.892835 }, image: '/sad.svg', title: 'Sad House 2' },
-  { id: 5, name:"👻👻👻👻👻", position: { lat: 52.482910, lng: -1.892730 }, image: '/happy.svg', title: 'Happy House 3' },
-  { id: 6, name:"👻👻👻", position: { lat: 52.483050, lng: -1.892620 }, image: '/happy.svg', title: 'Happy House 4' },
+  { id: 1, name:"👻👻👻👻", position: { lat: 52.48267771366152, lng: -1.8924990491205056 }, image: '/markers/happy.svg', title: 'Happy House 1' },
+  { id: 2, name:"👻👻", position: { lat: 52.47267771366152, lng: -1.8824990491205056 }, image: '/markers/happy.svg', title: 'Happy House 2' },
+  { id: 3, name:"👻", position: { lat: 52.49267771366152, lng: -1.9024990491205056 }, image: '/markers/sad.svg', title: 'Sad House 1' },
+  { id: 4, name:"👻👻👻", position: { lat: 52.482760, lng: -1.892835 }, image: '/markers/sad.svg', title: 'Sad House 2' },
+  { id: 5, name:"👻👻👻👻👻", position: { lat: 52.482910, lng: -1.892730 }, image: '/markers/happy.svg', title: 'Happy House 3' },
+  { id: 6, name:"👻👻👻", position: { lat: 52.483050, lng: -1.892620 }, image: '/markers/happy.svg', title: 'Happy House 4' },
 ]
 
 // This is the map app
