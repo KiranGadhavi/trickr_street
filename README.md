@@ -29,7 +29,3 @@ Trickr Street is a Next.js application that features an interactive Google Map w
 ## Contributing
 
 We welcome contributions! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License.
