@@ -1,0 +1,22 @@
+// {
+//   "env": {
+//     "test": {
+//       "presets": [
+//         "@babel/preset-env",
+//         ["@babel/preset-react", { "runtime": "automatic" }]
+//       ]
+//     },
+//     "development": {
+//       "presets": ["next/babel"]
+//     },
+//     "production": {
+//       "presets": ["next/babel"]
+//     }
+//   }
+// }
+{
+  "presets": [
+    ["@babel/preset-env", { "targets": { "node": "current" } }],
+    ["@babel/preset-react", { "runtime": "automatic" }]
+  ]
+}
