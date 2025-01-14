@@ -72,11 +72,11 @@ We would have liked to integrate the database with the location markers, include
 
 Follow the instructions below to install the project locally, if you wish to:
 
-1. Get an API key at [https://example.com](https://example.com/)
+1. Get an API key at [Google Maps](https://developers.google.com/maps)
 2. Clone the repository
 
      ```shell
-    git clone https://github.com/github_username/repo_name.git
+    git clone https://github.com/KiranGadhavi/trickr_street
     ```
 
 4. Install NPM Packages: `npm install`
